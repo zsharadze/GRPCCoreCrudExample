@@ -1,0 +1,99 @@
+﻿@page
+@model IndexModel
+@{
+    ViewData["Title"] = "Home page";
+}
+
+@if (ViewBag.Error != null)
+{
+    <h3 class="text-danger">@ViewBag.Error</h3>
+}
+
+<br />
+<div style="padding:20px">
+    <h3 id="AddEditProductLbl">Add Product</h3>
+    <form asp-page="/AddEditProduct" method="post" class="form-horizontal">
+        <input id="Id" name="Id" type="hidden" />
+        <input id="CreatedDate" name="CreatedDate" type="hidden" value="@(DateTime.Now.ToString())"/>
+        <div class="form-group">
+            <label for="Name" class="control-label">Name:</label>
+            <input id="Name" name="Name" class="w-25" />
+        </div>
+        <button id="btnSubmit" type="submit" class="btn btn-primary">Add</button>
+    </form>
+    <br />
+
+    <h3>Products</h3>
+    @if (Model.ProductsList != null)
+    {
+        <table class="table w-50">
+            <tr>
+                <td>Id</td>
+                <td>Name</td>
+                <td>Created Date</td>
+                <td></td>
+                <td></td>
+            </tr>
+            @foreach (var item in Model.ProductsList)
+            {
+                <tr>
+                    <td>
+                        @item.Id
+                    </td>
+                    <td>
+                        @item.Name
+                    </td>
+                    <td>
+                        @item.CreatedDate
+                    </td>
+                    <td>
+                        <a href="#" onclick="EditProduct(@(item.Id))">Edit</a>
+                    </td>
+                    <td>
+                        <a href="#" onclick="DeleteProduct(@(item.Id))">Delete</a>
+                    </td>
+                </tr>
+            }
+        </table>
+    }
+</div>
+
+<script>
+
+    function EditProduct(id) {
+        $.ajax({
+            type: "GET",
+            url: "/EditProduct/?handler=EditProduct&Id="+id,
+            contentType: "application/json; charset=utf-8",
+            dataType: "json",
+            beforeSend: function (xhr) { xhr.setRequestHeader('RequestVerificationToken', $('input:hidden[name="__RequestVerificationToken"]').val()); },
+            success: function (response) {
+                $("#AddEditProductLbl").html("Edit Product");
+                $("#btnSubmit").html("Save");
+                $("#Id").val(response.Id);
+                $("#Name").val(response.Name);
+                $("#CreatedDate").val(response.CreatedDate);
+            },
+            failure: function (response) {
+
+            }
+        });
+    }
+
+    function DeleteProduct(id) {
+        $.ajax({
+            type: "POST",
+            url: "/DeleteProduct/?handler=DeleteProduct",
+            contentType: "application/json; charset=utf-8",
+            data: JSON.stringify({ "Id": id }),
+            dataType: "json",
+            beforeSend: function (xhr) { xhr.setRequestHeader('RequestVerificationToken', $('input:hidden[name="__RequestVerificationToken"]').val()); },
+            success: function (response) {
+                window.location.reload();
+            },
+            failure: function (response) {
+               
+            }
+        });
+    }
+</script>

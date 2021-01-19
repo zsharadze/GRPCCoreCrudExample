@@ -1,0 +1,23 @@
+syntax = "proto3";
+
+option csharp_namespace = "GRPCCoreCrudExampleServer";
+
+package product;
+
+service Product {
+  rpc AddProduct (ProductMessage) returns (ProductMessage);
+  rpc UpdateProduct (ProductMessage) returns (ProductMessage);
+  rpc DeleteProduct (ProductMessage) returns (ProductMessage);
+  rpc GetProducts (ProductMessage) returns (ProductsResponce);
+  rpc GetProduct (ProductMessage) returns (ProductMessage);
+}
+
+message ProductMessage{
+	int32 id = 1;
+	string name = 2;
+	string createdDate = 3;
+}
+
+message ProductsResponce {
+    repeated ProductMessage items = 1;
+}
