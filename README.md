@@ -10,7 +10,7 @@ This is server/client Crud example of GRPC Service in .Net. Client is ASP.Net Co
 4. Go to GRPCCoreCrudExampleClient and open GRPCCoreCrudExampleClient.sln.
 5. Run the project and you are done!
 
-![screenshot](https://github.com/user5934951/GRPCCoreCrudExample/blob/master/Capture.png?raw=true)
+![screenshot](https://github.com/zsharadze/GRPCCoreCrudExample/blob/master/Capture.png?raw=true)
 
 ###### About me
 My name is Zviad Sharadze. I'm .Net Developer from Tbilisi, Georgia.
