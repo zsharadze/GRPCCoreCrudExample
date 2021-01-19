@@ -2,7 +2,7 @@
 
 This is server/client Crud example of GRPC Service in .Net. Client is ASP.Net Core 5 web site. Projects also uses AutoMapper.
 
-## Usage
+## Getting Started
 1. Go to GRPCCoreCrudExampleServer and open GRPCCoreCrudExampleServer.sln.
 1. In appsettings.json change DefaultConnection string.
 2. In Package Manager Console run Update-Database command to create database and tables.
