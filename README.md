@@ -1,6 +1,6 @@
-# GRPC Core Crud Example
+# gRPC Core Crud Example
 
-This is server/client Crud example of GRPC Service in .Net. Client is ASP.Net Core 5 web site. Projects also uses AutoMapper.
+This is server/client Crud example of gRPC Service in .Net. Client is ASP.Net Core 5 web site. Projects also uses AutoMapper.
 
 ## Getting Started
 1. Go to GRPCCoreCrudExampleServer and open GRPCCoreCrudExampleServer.sln.
