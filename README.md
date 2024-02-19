@@ -14,4 +14,3 @@ This is server/client Crud example of gRPC Service in .Net. Client is ASP.Net Co
 
 ###### About me
 My name is Zviad Sharadze. I'm .Net Developer from Tbilisi, Georgia.
-I'm Microsoft Certified Professional.
